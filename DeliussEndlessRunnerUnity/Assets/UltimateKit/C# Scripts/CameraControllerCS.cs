@@ -26,7 +26,7 @@ public class CameraControllerCS : MonoBehaviour {
 	//camera position variables
 	//all these variables are changed continuously during runtime
 	//to set the camera position
-	private float fCameraDistance = 30;//distance between player and camera
+	public float fCameraDistance = 30;//distance between player and camera
 	private Vector3 v3CamDirection;	//camera direction
 	private float fCurrentCamDir = 90.0f;	//camera rotation based on player's rotation
 	private float fCameraRotationX = 0.0f;	//camera x rotation

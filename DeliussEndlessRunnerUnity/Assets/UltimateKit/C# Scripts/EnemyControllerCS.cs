@@ -61,8 +61,8 @@ public class EnemyControllerCS : MonoBehaviour {
 		if (tEnemy.gameObject.CompareTag("TempHHEnemy"))
 		{	
 			//set the position of guard in current frame		
-			tEnemy.position = new Vector3(Mathf.Lerp(tEnemy.position.x, (tPlayer.position.x - fEnemyPosition - 20f), Time.deltaTime*10), 
-				tEnemy.position.y + 5f, tEnemy.position.z);
+			tEnemy.position = new Vector3(Mathf.Lerp(tEnemy.position.x, (tPlayer.position.x - fEnemyPosition - 3f), Time.deltaTime*10), 
+				tEnemy.position.y + 1.5f, tEnemy.position.z);
 		}
 		else
 		{
@@ -83,6 +83,7 @@ public class EnemyControllerCS : MonoBehaviour {
 			tEnemy.localEulerAngles = new Vector3(tEnemy.localEulerAngles.x,-hControllerScriptCS.getCurrentPlayerRotation(), tEnemy.localEulerAngles.z);
 		}
 		
+		// Roman - this is where the enemy lerps out of the screen
 		if (iEnemyState == 1)//hide the chasing character
 		{
 			fCosLerp += (Time.deltaTime/10);
@@ -96,6 +97,7 @@ public class EnemyControllerCS : MonoBehaviour {
 				hSoundManagerCS.stopSound(SoundManagerCS.EnemySounds.Siren);
 			}
 		}
+		// Roman - enemy comes back into view
 		else if (iEnemyState == 2)//show the chasing character
 		{
 			hSoundManagerCS.playSound(SoundManagerCS.EnemySounds.Siren);
@@ -138,6 +140,7 @@ public class EnemyControllerCS : MonoBehaviour {
 		{
 			hSoundManagerCS.stopSound(SoundManagerCS.EnemySounds.Siren);
 		}
+		//print (iEnemyState);
 	}//end of Update
 	
 	/*
