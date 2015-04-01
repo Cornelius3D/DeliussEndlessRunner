@@ -26,7 +26,12 @@ public class CameraControllerCS : MonoBehaviour {
 	//camera position variables
 	//all these variables are changed continuously during runtime
 	//to set the camera position
-	public float fCameraDistance = 30;//distance between player and camera
+	
+	// Roman create a camera offset so we can control how away the cam is
+	[Range(0,40)]
+	public float camOffset = 5.0f;
+	
+	private float fCameraDistance = 30;//distance between player and camera
 	private Vector3 v3CamDirection;	//camera direction
 	private float fCurrentCamDir = 90.0f;	//camera rotation based on player's rotation
 	private float fCameraRotationX = 0.0f;	//camera x rotation
@@ -82,7 +87,7 @@ public class CameraControllerCS : MonoBehaviour {
 	*/
 	private void CameraMain()
 	{
-		fCameraDistance = Mathf.Lerp(fCameraDistance,fCameraLerpValue,Time.deltaTime*1.5f);
+		fCameraDistance = Mathf.Lerp(fCameraDistance,fCameraLerpValue + camOffset,Time.deltaTime*1.5f);
 		fCurrentCamDir = Mathf.Lerp(fCurrentCamDir,-hControllerScriptCS.getCurrentPlayerRotation()+90.0f,Time.deltaTime*4.0f);
 		tCamera.localEulerAngles = new Vector3(fCameraRotationX, fCurrentCamDir, fCameraRotationZ);
 		v3CamDirection = rotateAlongY(new Vector3(-1,0,0),-hControllerScriptCS.getCurrentPlayerRotation());

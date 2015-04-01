@@ -13,7 +13,19 @@ using UnityEngine;
 using System.Collections;
 
 public class EnemyControllerCS : MonoBehaviour {
-
+	
+	// Roman - tweak player's height offset
+	[Range(0, 5)]
+	public float enemyVerticalPosOffset = 1.5f;
+	
+	// Roman - tweak how far away the enemy is from the player
+	[Range(0, 10)]
+	public float enemyDistFromPlayerOffset = 1.0f;
+	
+	// Roman - tweak how far away the enemy is from the player
+	[Range(-10, 10)]
+	public float enemyHorizontalOffset = 0.0f;
+	
 	private Transform tEnemy;	//enemy transform
 	private Transform tPlayer;//player transform
 	
@@ -61,8 +73,8 @@ public class EnemyControllerCS : MonoBehaviour {
 		if (tEnemy.gameObject.CompareTag("TempHHEnemy"))
 		{	
 			//set the position of guard in current frame		
-			tEnemy.position = new Vector3(Mathf.Lerp(tEnemy.position.x, (tPlayer.position.x - fEnemyPosition - 3f), Time.deltaTime*10), 
-				tEnemy.position.y + 1.5f, tEnemy.position.z);
+			tEnemy.position = new Vector3(Mathf.Lerp(tEnemy.position.x, (tPlayer.position.x - fEnemyPosition -  + enemyDistFromPlayerOffset), Time.deltaTime*10), 
+				tEnemy.position.y + enemyVerticalPosOffset, tEnemy.position.z + enemyHorizontalOffset);
 		}
 		else
 		{

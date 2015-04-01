@@ -296,7 +296,7 @@ public class ElementsGeneratorCS : MonoBehaviour {
 			if (ObjectHandle.gameObject.CompareTag("TempGKObstacle"))
 			{
 			    ObjectHandle.position += new Vector3(0,17f,0);
-			    print ("created Gate Keeper");
+			    //print ("created Gate Keeper");
 			}
 		}
 		else if (elementNumber >= iObstacleCount && elementNumber < (iObstacleCount+iPowerupCount))//powerups
