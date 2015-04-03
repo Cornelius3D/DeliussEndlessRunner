@@ -208,21 +208,22 @@ function Start()
  * 				when the game is launched/ restarted.
  * CALLED BY:	Start()
  * */
-private function playIdleAnimations()
-{
-	while(true)
-	{
-		yield WaitForFixedUpdate();
-		
-		//check if idle animations are not being played
-		if (!aPlayer.IsPlaying("Idle_1") && !aPlayer.IsPlaying("Idle_2"))
-		{
-			aPlayer.GetComponent.<Animation>().Play("Idle_1");//play the idle animation
-			//wait for the current animation to end and play the second idle animation
-			aPlayer.PlayQueued("Idle_2", QueueMode.CompleteOthers);
-		}
-	}//end of while
-}
+// Roman - function is never used?
+//private function playIdleAnimations()
+//{
+//	while(true)
+//	{
+//		yield WaitForFixedUpdate();
+//		
+//		//check if idle animations are not being played
+//		if (!aPlayer.IsPlaying("Idle_1") && !aPlayer.IsPlaying("Idle_2"))
+//		{
+//			aPlayer.GetComponent.<Animation>().Play("Idle_1");//play the idle animation
+//			//wait for the current animation to end and play the second idle animation
+//			aPlayer.PlayQueued("Idle_2", QueueMode.CompleteOthers);
+//		}
+//	}//end of while
+//}
 
 /*
 *	FUNCTION: Enable controls, start player animation and movement

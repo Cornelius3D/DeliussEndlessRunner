@@ -92,10 +92,11 @@ public class NGUIMenuScript : MonoBehaviour {
 	
 	void FixedUpdate()
 	{		
+		// Roman - Never used?
 		//display countdown timer on Resume
-		if (iResumeGameState == 0)
-			;
-		else if (iResumeGameState == 1)//display the counter
+		//if (iResumeGameState == 0)
+			
+		if (iResumeGameState == 1)//display the counter
 		{
 			NGUITools.SetActive(uilPauseCounter.gameObject, true);
 			iResumeGameStartTime = (int)Time.time;

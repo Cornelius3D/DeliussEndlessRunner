@@ -257,11 +257,11 @@ public class ElementsGeneratorCS : MonoBehaviour {
 	private RaycastHit getHitInfo(Vector3 v3Position)
 	{
 		//Raycast towards the ground to check if terrain present
-		bool Groundhit = false;
+		//bool Groundhit = false;
 		RaycastHit hitInfo;
 		Vector3 DownPos = new Vector3(0,-100,0) + v3Position;
 		var layerMask = 1<<9;
-		Groundhit = Physics.Linecast(v3Position + new Vector3(0,100,0),DownPos, out hitInfo,layerMask);
+		Physics.Linecast(v3Position + new Vector3(0,100,0),DownPos, out hitInfo,layerMask);
 		
 		return hitInfo;
 	}

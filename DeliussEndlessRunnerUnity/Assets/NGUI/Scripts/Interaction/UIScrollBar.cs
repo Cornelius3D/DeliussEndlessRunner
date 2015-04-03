@@ -170,17 +170,18 @@ public class UIScrollBar : MonoBehaviour
 		}
 		set
 		{
-			if (mFG != null)
-			{
-				mFG.alpha = value;
-				mFG.gameObject.active = mFG.alpha > 0.001f;
-			}
-
-			if (mBG != null)
-			{
-				mBG.alpha = value;
-				mBG.gameObject.active = mBG.alpha > 0.001f;
-			}
+		// Roman this creates an error
+//			if (mFG != null)
+//			{
+//				mFG.alpha = value;
+//				mFG.gameObject.activeInHierarchy = mFG.alpha > 0.001f;
+//			}
+//
+//			if (mBG != null)
+//			{
+//				mBG.alpha = value;
+//				mBG.gameObject.activeInHierarchy = mBG.alpha > 0.001f;
+//			}
 		}
 	}
 

@@ -143,43 +143,44 @@ private function UpdateHUDStats()
 *				defined by fNotificationDistance.
 *	CALLED BY:	FixedUpdate()
 */
-private function displayDistanceNotificaiton()
-{
-	while (true)
-	{
-		yield WaitForFixedUpdate();
-		
-		if (iDistanceNotifState == 0)
-		{			
-			tDistanceNotification.gameObject.SetActive(true);
-			tmDistanceNotif.text = Mathf.Round(fCurrentDistance).ToString();
-			tDistanceNotification.localScale = Vector3(0,0,0);
-			
-			iDistanceNotifState = 1;
-		}
-		else if (iDistanceNotifState == 1)
-		{
-			tDistanceNotification.localScale = Vector3.Lerp(tDistanceNotification.localScale, Vector3(1.79,1.79,1), Time.deltaTime*2.5);
-			
-			if (tDistanceNotification.localScale.x >= 1.65)
-				iDistanceNotifState = 2;
-		}
-		else if (iDistanceNotifState == 2)
-		{			
-			tDistanceNotification.gameObject.SetActive(false);
-			tmDistanceNotif.fontSize = 80;
-			
-			iDistanceNotifState = 3;			
-			break;
-		}
-		else if (iDistanceNotifState == 3)
-		{
-			StopCoroutine("displayDistanceNotificaiton");
-			iDistanceNotifState = 0;
-			break;
-		}
-	}//end of while
-}
+// Roman - Never used?
+//private function displayDistanceNotificaiton()
+//{
+//	while (true)
+//	{
+//		yield WaitForFixedUpdate();
+//		
+//		if (iDistanceNotifState == 0)
+//		{			
+//			tDistanceNotification.gameObject.SetActive(true);
+//			tmDistanceNotif.text = Mathf.Round(fCurrentDistance).ToString();
+//			tDistanceNotification.localScale = Vector3(0,0,0);
+//			
+//			iDistanceNotifState = 1;
+//		}
+//		else if (iDistanceNotifState == 1)
+//		{
+//			tDistanceNotification.localScale = Vector3.Lerp(tDistanceNotification.localScale, Vector3(1.79,1.79,1), Time.deltaTime*2.5);
+//			
+//			if (tDistanceNotification.localScale.x >= 1.65)
+//				iDistanceNotifState = 2;
+//		}
+//		else if (iDistanceNotifState == 2)
+//		{			
+//			tDistanceNotification.gameObject.SetActive(false);
+//			tmDistanceNotif.fontSize = 80;
+//			
+//			iDistanceNotifState = 3;			
+//			break;
+//		}
+//		else if (iDistanceNotifState == 3)
+//		{
+//			StopCoroutine("displayDistanceNotificaiton");
+//			iDistanceNotifState = 0;
+//			break;
+//		}
+//	}//end of while
+//}
 
 /*
 *	FUNCTION:	Display the drop down with the completed mission description

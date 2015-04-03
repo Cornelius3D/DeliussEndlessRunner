@@ -71,9 +71,9 @@ public class InGameScriptCS : MonoBehaviour {
 	
 	void Update()
 	{	
-		if (iMenuStatus == 0)	//normal gameplay
-			;
-		else if (iMenuStatus == 1)//display main menu and pause game
+		//if (iMenuStatus == 0)	//normal gameplay
+			
+		if (iMenuStatus == 1)//display main menu and pause game
 		{	
 			if (isCustomMenuEnabled())
 				hMenuScriptCS.setMenuScriptStatus(true);

@@ -225,10 +225,11 @@ public class MenuScriptCS : MonoBehaviour {
 	
 	void FixedUpdate()
 	{		
+		// Roman - What the hell is this?
 		//display countdown timer on Resume
-		if (iResumeGameState == 0)
-			;
-		else if (iResumeGameState == 1)//display the counter
+		//if (iResumeGameState == 0)
+		
+		if (iResumeGameState == 1)//display the counter
 		{
 			tmPauseCountdown = GameObject.Find("HUDMainGroup/HUDPauseCounter").GetComponent(typeof(TextMesh)) as TextMesh;
 			((MeshRenderer)GameObject.Find("HUDMainGroup/HUDPauseCounter").GetComponent(typeof(MeshRenderer))).enabled = true;

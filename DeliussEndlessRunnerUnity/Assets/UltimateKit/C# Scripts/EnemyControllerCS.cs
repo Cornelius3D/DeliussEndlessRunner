@@ -26,6 +26,9 @@ public class EnemyControllerCS : MonoBehaviour {
 	[Range(-10, 10)]
 	public float enemyHorizontalOffset = 0.0f;
 	
+	[Range(50, 150)]
+	public float enemyFadeOffDist;
+	
 	private Transform tEnemy;	//enemy transform
 	private Transform tPlayer;//player transform
 	
@@ -62,6 +65,7 @@ public class EnemyControllerCS : MonoBehaviour {
 	public void launchEnemy()
 	{
 		iEnemyState = 2;
+		print ("enemy launched");
 	}
 	
 	void FixedUpdate ()
@@ -99,7 +103,7 @@ public class EnemyControllerCS : MonoBehaviour {
 		if (iEnemyState == 1)//hide the chasing character
 		{
 			fCosLerp += (Time.deltaTime/10);
-			fEnemyPosition = Mathf.Lerp(fEnemyPosition, fEnemyPositionX + 45, Mathf.Cos(fCosLerp)/1000);
+			fEnemyPosition = Mathf.Lerp(fEnemyPosition, fEnemyPositionX + enemyFadeOffDist, Mathf.Cos(fCosLerp)/1000);
 			
 			if (fCosLerp >= 0.7f)
 			{
