@@ -63,7 +63,7 @@ public class ControllerScriptCS : MonoBehaviour {
 	private SoundManagerCS hSoundManagerCS;
 	private CameraControllerCS hCameraControllerCS;
 	private PowerupsMainControllerCS hPowerupScriptCS;
-	private EnemyControllerCS hEnemyControllerCS;
+	private EnemyControllerCS[] hEnemyControllerCS;  // Roman - make this an array
 	private MenuScriptCS hMenuScriptCS;
 	private MissionsControllerCS hMissionsControllerCS;
 	private GlobalAchievementControllerCS hGlobalAchievementControllerCS;
@@ -140,7 +140,17 @@ public class ControllerScriptCS : MonoBehaviour {
 		hPitsMainControllerCS = (PitsMainControllerCS)this.GetComponent(typeof(PitsMainControllerCS));
 		hCheckPointsMainCS = (CheckPointsMainCS)this.GetComponent(typeof(CheckPointsMainCS));
 		hPowerupScriptCS = (PowerupsMainControllerCS)this.GetComponent(typeof(PowerupsMainControllerCS));
-		hEnemyControllerCS = (EnemyControllerCS)GameObject.Find("Enemy").GetComponent(typeof(EnemyControllerCS));
+		
+		// Roman - grab all enemy scripts
+		//hEnemyControllerCS = (EnemyControllerCS)GameObject.Find("Enemy").GetComponent(typeof(EnemyControllerCS));
+		hEnemyControllerCS = new EnemyControllerCS[3];
+		
+		GameObject[] enemies = GameObject.FindGameObjectsWithTag("TempHHEnemy");
+		for (int i = 0; i < 3; i++)
+		{
+			hEnemyControllerCS[i] = enemies[i].GetComponent<EnemyControllerCS>();
+		}
+		
 		hPowerupScriptCS = (PowerupsMainControllerCS)this.GetComponent(typeof(PowerupsMainControllerCS));
 		hCameraControllerCS = (CameraControllerCS)GameObject.Find("Main Camera").GetComponent(typeof(CameraControllerCS));
 		swipeLogic = (SwipeControlsCS)transform.GetComponent(typeof(SwipeControlsCS));
@@ -165,10 +175,10 @@ public class ControllerScriptCS : MonoBehaviour {
 			aPlayer = (Animation)this.transform.Find("PlayerRotation/PlayerMesh/Prisoner").GetComponent(typeof(Animation));			
 			StartCoroutine("playIdleAnimations");//start playing idle animations
 		}
-		else if (this.transform.Find("PlayerRotation/PlayerMesh/Prisoner(MecAnim)"))//check for mecanim animated character
+		else if (this.transform.Find("PlayerRotation/PlayerMesh/Mechanim"))//check for mecanim animated character
 		{
 			mecanimEnabled = true;
-			aPlayerMecAnim = (Animator)this.transform.Find("PlayerRotation/PlayerMesh/Prisoner(MecAnim)").GetComponent(typeof(Animator));
+			aPlayerMecAnim = (Animator)this.transform.Find("PlayerRotation/PlayerMesh/Mechanim").GetComponent(typeof(Animator));
 			
 			v3DefaultPlayerAnimPosition = aPlayerMecAnim.transform.localPosition;//get the default player position
 			v3DefaultPlayerAnimRotation = aPlayerMecAnim.transform.localEulerAngles;//get the default player rotation		
@@ -239,7 +249,12 @@ public class ControllerScriptCS : MonoBehaviour {
 	public void launchGame()
 	{
 		StopCoroutine("playIdleAnimations");//stop idle animations
-		hEnemyControllerCS.launchEnemy();
+		
+		// Roman - launch all enemies
+		foreach (EnemyControllerCS child in hEnemyControllerCS)
+		{
+			child.launchEnemy();
+		}
 				
 		if (!mecanimEnabled)//if legacy animations enabled
 		{
@@ -573,7 +588,13 @@ public class ControllerScriptCS : MonoBehaviour {
 				aPlayerMecAnim.SetBool("DeathAnim", true);
 				aPlayerMecAnim.SetBool("RunAnim", false);
 			}
-			hEnemyControllerCS.playDeathAnimation();
+			
+			// Roman - play all death animations for enemies
+			// hEnemyControllerCS.playDeathAnimation();
+			foreach (EnemyControllerCS child in hEnemyControllerCS)
+			{
+				child.playDeathAnimation();
+			}
 			
 			if (hInGameScriptCS.isCustomMenuEnabled())
 				hMenuScriptCS.hideHUDElements();
@@ -598,7 +619,8 @@ public class ControllerScriptCS : MonoBehaviour {
 		hCameraControllerCS.setCameraShakeImpulseValue(1);
 		iLanePosition = iLastLanePosition;	//stop strafe
 			
-		if (hEnemyControllerCS.processStumble())
+		// Roman - added [0]
+		if (hEnemyControllerCS[0].processStumble())
 		{	
 			hInGameScriptCS.collidedWithObstacle();//call death if player stumbled twice in unit time
 		}
