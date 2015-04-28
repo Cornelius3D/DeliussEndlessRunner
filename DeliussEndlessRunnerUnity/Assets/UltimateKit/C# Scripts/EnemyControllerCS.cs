@@ -22,12 +22,15 @@ public class EnemyControllerCS : MonoBehaviour {
 	[Range(0, 10)]
 	public float enemyDistFromPlayerOffset = 1.0f;
 	
-	// Roman - tweak how far away the enemy is from the player
+	// Roman - tweak the horizontal position of the enemy (how far to the lef or how far to the right)
 	[Range(-10, 10)]
 	public float enemyHorizontalOffset = 0.0f;
 	
 	[Range(50, 150)]
 	public float enemyFadeOffDist;
+	
+	// Roman - The death position to animate to when the player dies
+	public Transform deathPosition;
 	
 	private Transform tEnemy;	//enemy transform
 	private Transform tPlayer;//player transform
@@ -73,25 +76,18 @@ public class EnemyControllerCS : MonoBehaviour {
 		if(hInGameScriptCS.isGamePaused()==true)
 			return;
 		
-		// Roman - Temporary hell hound enemy
-		if (tEnemy.gameObject.CompareTag("TempHHEnemy"))
-		{	
-			//set the position of guard in current frame		
-			tEnemy.position = new Vector3(Mathf.Lerp(tEnemy.position.x, (tPlayer.position.x - fEnemyPosition -  + enemyDistFromPlayerOffset), Time.deltaTime*10), 
+		// Roman - Hell hound chases player if player is not dead
+		if (iEnemyState < 3)
+		{				
+			tEnemy.position = new Vector3(Mathf.Lerp(tEnemy.position.x, (tPlayer.position.x - fEnemyPosition - enemyDistFromPlayerOffset), Time.deltaTime*10), 
 				tEnemy.position.y + enemyVerticalPosOffset, tEnemy.position.z + enemyHorizontalOffset);
-		}
-		else
-		{
-			tEnemy.position = new Vector3(Mathf.Lerp(tEnemy.position.x, (tPlayer.position.x - fEnemyPosition), Time.deltaTime*10), 
-			                              tEnemy.position.y, tEnemy.position.z);
-		}
 		
 		
 			
-		if (!hControllerScriptCS.isInAir())//follow the player in y-axis if he's not jumping (cars cant jump)
-			tEnemy.position = new Vector3(tEnemy.position.x, Mathf.Lerp(tEnemy.position.y, tPlayer.position.y + fEnemyPositionY, Time.deltaTime*8),
-				tEnemy.position.z);			
-		
+			if (!hControllerScriptCS.isInAir())//follow the player in y-axis if he's not jumping (cars cant jump)
+				tEnemy.position = new Vector3(tEnemy.position.x, Mathf.Lerp(tEnemy.position.y, tPlayer.position.y + fEnemyPositionY, Time.deltaTime*8),
+					tEnemy.position.z);			
+		}
 		//ignore y-axis rotation and horizontal movement in idle and death state
 		if (iEnemyState < 4)
 		{
@@ -136,26 +132,16 @@ public class EnemyControllerCS : MonoBehaviour {
 		//DEATH SEQUENCE
 		else if (iEnemyState == 4)//on death
 		{	
-			//to ensure correct rotation animation
-			tEnemy.localEulerAngles = new Vector3(tEnemy.localEulerAngles.x, 350, tEnemy.localEulerAngles.z);
+			print ("death");
+			//hSoundManagerCS.playSound(SoundManagerCS.EnemySounds.TiresSqueal);
+			//hSoundManagerCS.stopSound(SoundManagerCS.EnemySounds.Siren);
 			
-			hSoundManagerCS.playSound(SoundManagerCS.EnemySounds.TiresSqueal);
-			iEnemyState = 5;
+			// works
+			Vector3 deathPos = new Vector3(deathPosition.position.x, transform.position.y, deathPosition.position.z);
+			transform.position = Vector3.Lerp (transform.position, deathPos, Time.deltaTime * 10f);
+			transform.eulerAngles = deathPosition.eulerAngles;
 		}
-		else if (iEnemyState == 5)//pin behind the player
-		{
-			fEnemyPosition = Mathf.Lerp(fEnemyPosition, fEnemyPositionX+20, Time.fixedDeltaTime*50);//vertical position after skid
-			tEnemy.position = new Vector3(tEnemy.position.x, tEnemy.position.y,
-				Mathf.Lerp(tEnemy.position.z, tPlayer.position.z + 20, Time.deltaTime*10));//horizontal position after skid
-						
-			tEnemy.localEulerAngles = Vector3.Lerp(tEnemy.localEulerAngles, new Vector3(0,260,0), Time.deltaTime*10);//90 degree rotation
-			if (tEnemy.localEulerAngles.y <= 261)
-				iEnemyState = 6;
-		}
-		else if (iEnemyState == 6)
-		{
-			hSoundManagerCS.stopSound(SoundManagerCS.EnemySounds.Siren);
-		}
+		
 		//print (iEnemyState);
 	}//end of Update
 	

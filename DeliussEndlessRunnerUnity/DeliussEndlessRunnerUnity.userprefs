@@ -1,17 +1,6 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/UltimateKit/C# Scripts/PitsMainControllerCS.cs">
-    <Files>
-      <File FileName="../../../NomNom/NomNomUnity/Assets/Scripts/KitchenController.cs" Line="21" Column="3" />
-      <File FileName="../../../NomNom/NomNomUnity/Assets/Scripts/DragFood.cs" Line="1" Column="1" />
-      <File FileName="../../../NomNom/NomNomUnity/Assets/Scripts/OrderingController.cs" Line="1" Column="1" />
-      <File FileName="../../../NomNom/NomNomUnity/Assets/Scripts/MoveCustomer.cs" Line="1" Column="1" />
-      <File FileName="Assets/Editor/PatchesCPGenerator.cs" Line="1" Column="1" />
-      <File FileName="Assets/UltimateKit/C# Scripts/CheckPointsMainCS.cs" Line="1" Column="1" />
-      <File FileName="Assets/UltimateKit/C# Scripts/PatchesRandomizerCS.cs" Line="1" Column="1" />
-      <File FileName="Assets/UltimateKit/C# Scripts/PitsMainControllerCS.cs" Line="51" Column="1" />
-    </Files>
-  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.Workbench />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>

@@ -270,6 +270,9 @@ public class ControllerScriptCS : MonoBehaviour {
 	
 	void Update()
 	{	
+		// Roman
+		//print (fCurrentDistance);
+		
 		if(hInGameScriptCS.isGamePaused()==true)
 			return;
 		
