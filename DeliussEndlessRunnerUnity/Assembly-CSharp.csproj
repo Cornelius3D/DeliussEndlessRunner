@@ -105,7 +105,7 @@
      <Compile Include="Assets\NGUI\Scripts\UI\UITiledSprite.cs" />
      <Compile Include="Assets\NGUI\Scripts\UI\UITooltip.cs" />
      <Compile Include="Assets\NGUI\Scripts\UI\UIViewport.cs" />
-     <Compile Include="Assets\ParticleSpeedUpTest.cs" />
+     <Compile Include="Assets\Scripts\ParticleSpeedUpTest.cs" />
      <Compile Include="Assets\UltimateKit\C# Scripts\CameraControllerCS.cs" />
      <Compile Include="Assets\UltimateKit\C# Scripts\CheckPointsMainCS.cs" />
      <Compile Include="Assets\UltimateKit\C# Scripts\ControllerScriptCS.cs" />
