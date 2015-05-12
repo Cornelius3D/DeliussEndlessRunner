@@ -119,10 +119,12 @@ public class PowerupsMainControllerCS : MonoBehaviour {
 	*/
 	public void collectedPowerup(int index)
 	{
+		// Roman - Moved sound out of next conditional so that it plays if we use magnetism type currency
+		hSoundManagerCS.playSound(SoundManagerCS.PowerupSounds.CurrencyCollection);//play collection sound
+		
 		if(index == (int)PowerUps.Currency)//if a currency unit is collected
 		{
 			iCurrencyUnits += 1;	//add 1 to the currency count
-			hSoundManagerCS.playSound(SoundManagerCS.PowerupSounds.CurrencyCollection);//play collection sound
 	
 			hMissionsControllerCS.incrementMissionCount(MissionsControllerCS.MissionTypes.Currency);//count the collected currency for mission script
 			//count the collected currency for achievement script

@@ -1,8 +1,9 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/UltimateKit/C# Scripts/ElementsGeneratorCS.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="../../../../../../unity-experiments/GregCombatPrototype/Combat3/Assets/Scripts/CombatManager.cs">
     <Files>
-      <File FileName="Assets/UltimateKit/C# Scripts/ElementsGeneratorCS.cs" Line="398" Column="1" />
+      <File FileName="../../../../../../unity-experiments/GregCombatPrototype/Combat3/Assets/Scripts/CombatManager.cs" Line="194" Column="60" />
+      <File FileName="../../../../../../unity-experiments/GregCombatPrototype/Combat3/Assets/Scripts/MoveController.cs" Line="89" Column="95" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

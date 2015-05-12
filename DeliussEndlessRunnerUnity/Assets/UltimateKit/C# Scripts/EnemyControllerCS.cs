@@ -19,7 +19,7 @@ public class EnemyControllerCS : MonoBehaviour {
 	public float enemyVerticalPosOffset = 1.5f;
 	
 	// Roman - tweak how far away the enemy is from the player
-	[Range(0, 10)]
+	[Range(0, 30)]
 	public float enemyDistFromPlayerOffset = 1.0f;
 	
 	// Roman - tweak the horizontal position of the enemy (how far to the lef or how far to the right)

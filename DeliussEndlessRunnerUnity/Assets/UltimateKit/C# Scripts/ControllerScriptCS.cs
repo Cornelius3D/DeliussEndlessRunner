@@ -102,7 +102,8 @@ public class ControllerScriptCS : MonoBehaviour {
 	
 	//Physics Constants
 	//change these to adjust the initial and final movement speed
-	private float fStartingWalkSpeed = 150.0f;//when player starts running
+	// Roman - increased frpm 150 to 200
+	private float fStartingWalkSpeed = 200.0f;//when player starts running
 	private float fEndingWalkSpeed = 230.0f;	//final speed after acclerating
 	private float fCurrentWalkAccleration = 0.5f;	//rate of accleartion
 	
@@ -143,10 +144,10 @@ public class ControllerScriptCS : MonoBehaviour {
 		
 		// Roman - grab all enemy scripts
 		//hEnemyControllerCS = (EnemyControllerCS)GameObject.Find("Enemy").GetComponent(typeof(EnemyControllerCS));
-		hEnemyControllerCS = new EnemyControllerCS[3];
-		
 		GameObject[] enemies = GameObject.FindGameObjectsWithTag("TempHHEnemy");
-		for (int i = 0; i < 3; i++)
+		hEnemyControllerCS = new EnemyControllerCS[enemies.Length];
+		
+		for (int i = 0; i < enemies.Length; i++)
 		{
 			hEnemyControllerCS[i] = enemies[i].GetComponent<EnemyControllerCS>();
 		}

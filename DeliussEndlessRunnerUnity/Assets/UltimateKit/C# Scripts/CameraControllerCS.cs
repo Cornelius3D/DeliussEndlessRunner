@@ -28,7 +28,7 @@ public class CameraControllerCS : MonoBehaviour {
 	//to set the camera position
 	
 	// Roman create a camera offset so we can control how away the cam is
-	[Range(0,40)]
+	[Range(0,100)]
 	public float camOffset = 5.0f;
 	
 	private float fCameraDistance = 30;//distance between player and camera

@@ -123,12 +123,12 @@ public class PowerupScriptCS : MonoBehaviour {
 	{
 		if (powerupType == PowerupsMainControllerCS.PowerUps.Currency)
 		{
-			((MeshRenderer)this.transform.Find("A_Crystal").GetComponent(typeof(MeshRenderer))).enabled = bState;
-			((MeshRenderer)this.transform.Find("Shadow").GetComponent(typeof(MeshRenderer))).enabled = bState;
+			((MeshRenderer)this.transform.Find("Coin").GetComponent(typeof(MeshRenderer))).enabled = bState;
+			((MeshRenderer)this.transform.Find("currency_Shadow").GetComponent(typeof(MeshRenderer))).enabled = bState;
 		}
 		else if (powerupType == PowerupsMainControllerCS.PowerUps.Magnetism)
 		{		
-			((MeshRenderer)this.transform.Find("Center").GetComponent(typeof(MeshRenderer))).enabled = bState;
+			((MeshRenderer)this.transform.Find("Coin").GetComponent(typeof(MeshRenderer))).enabled = bState;
 		}
 	}//end of toggle mesh renderer function
 }
